@@ -4,7 +4,6 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.worldexplorer.shoppingservice.model.Product;
@@ -24,11 +23,11 @@ import com.worldexplorer.shoppingservice.model.Product;
  *
  */
 @FeignClient(name = "productservice")
-@RequestMapping("/products")
+//@RequestMapping("/products")
 public interface ProductServiceClient {
-	@GetMapping("/{id}")
+	@GetMapping("/products/{id}")
 	public ResponseEntity<Product> getProduct(@PathVariable(required = true) long id);
 	
-	@GetMapping("/{id}/stock")
+	@GetMapping("/products/{id}/stock")
 	public ResponseEntity<Product> updateStock(@PathVariable long id, @RequestParam(name = "quantity") double quantity);
 }

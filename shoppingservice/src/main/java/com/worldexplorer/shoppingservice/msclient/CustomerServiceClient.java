@@ -4,7 +4,6 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.worldexplorer.shoppingservice.model.Customer;
 /**
@@ -22,8 +21,8 @@ import com.worldexplorer.shoppingservice.model.Customer;
  *
  */
 @FeignClient(name = "customerservice")
-@RequestMapping("/customers")
+//@RequestMapping("/customers")
 public interface CustomerServiceClient {
-	@GetMapping(value = "/{id}")
+	@GetMapping(value = "/customers/{id}")
 	public ResponseEntity<Customer> getCustomer(@PathVariable("id") long id);
 }

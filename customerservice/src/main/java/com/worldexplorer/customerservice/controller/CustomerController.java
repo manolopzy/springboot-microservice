@@ -45,6 +45,7 @@ public class CustomerController {
 			@RequestParam(name = "regionId", required = false) Long regionId) {
 		List<Customer> customers = new ArrayList<>();
 		if (null == regionId) {
+			
 			customers = customerService.findCustomerAll();
 			if (customers.isEmpty()) {
 				return ResponseEntity.noContent().build();
@@ -58,7 +59,7 @@ public class CustomerController {
 				return ResponseEntity.notFound().build();
 			}
 		}
-
+		log.info("Found {} Customers", customers.size());
 		return ResponseEntity.ok(customers);
 	}
 
